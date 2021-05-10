@@ -1,0 +1,109 @@
+# Copyright Fauna, Inc.
+# SPDX-License-Identifier: MIT-0
+
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  aws-http-api
+
+Transform:
+- AWS::Serverless-2016-10-31
+
+Parameters:
+  FaunaSecretParameter:
+    Type: String
+    Default: fauna-secret
+
+Globals:
+  Function:
+    Runtime: nodejs14.x
+    MemorySize: 512
+    Timeout: 31
+    Environment:
+      Variables:
+        FAUNA_SECRET_PARAMETER: !Ref FaunaSecretParameter
+
+Resources:
+  ListStores:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/stores.list
+      Events:
+        HttpGetRequest:
+          Type: HttpApi
+          Properties:
+            Method: get
+            Path: /stores
+      Policies:
+        # Needed for logging
+        - AWSLambdaBasicExecutionRole
+        # Needed to retrieve our database key
+        - SSMParameterReadPolicy:
+            ParameterName: !Ref FaunaSecretParameter
+
+  CreateStore:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/stores.create
+      Events:
+        HttpPostRequest:
+          Type: HttpApi
+          Properties:
+            Method: post
+            Path: /stores
+      Policies:
+        # Needed for logging
+        - AWSLambdaBasicExecutionRole
+        # Needed to retrieve our database key
+        - SSMParameterReadPolicy:
+            ParameterName: !Ref FaunaSecretParameter
+
+  UpdateStore:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/stores.update
+      Events:
+        HttpPutRequest:
+          Type: HttpApi
+          Properties:
+            Method: put
+            Path: /stores/{id}
+      Policies:
+        # Needed for logging
+        - AWSLambdaBasicExecutionRole
+        # Needed to retrieve our database key
+        - SSMParameterReadPolicy:
+            ParameterName: !Ref FaunaSecretParameter
+
+  DeleteStore:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/stores.delete
+      Events:
+        HttpDeleteRequest:
+          Type: HttpApi
+          Properties:
+            Method: delete
+            Path: /stores/{id}
+      Policies:
+        # Needed for logging
+        - AWSLambdaBasicExecutionRole
+        # Needed to retrieve our database key
+        - SSMParameterReadPolicy:
+            ParameterName: !Ref FaunaSecretParameter
+
+Outputs:
+  ApiBaseURL:
+    Description: "HTTP API base URL"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+  CreateStoreURL:
+    Description: "URL for the CreateStore function (HTTP POST)"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/stores"
+  ListStoresURL:
+    Description: "URL for the ListStores function (HTTP GET)"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/stores"
+  UpdateStoreURL:
+    Description: "URL for the UpdateStore function (HTTP PUT)"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/stores/{id}"
+  DeleteStoreURL:
+    Description: "URL for the DeleteStore function (HTTP DELETE)"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/stores/{id}"

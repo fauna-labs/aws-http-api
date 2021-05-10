@@ -1,0 +1,9 @@
+{
+    "name": "Union Market",
+    "address": {
+        "street": "1309 5th St NE",
+        "city": "Washington",
+        "state": "DC",
+        "zipCode": "20002"
+    }
+}

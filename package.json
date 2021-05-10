@@ -1,0 +1,21 @@
+{
+    "name": "aws-http-api",
+    "description": "Sample code for the blog post [Building a serverless API with AWS SAM and Fauna](https://fauna.com/blog/building-a-serverless-api-with-aws-sam-and-fauna)",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "faunadb": "^4.2.0"
+    },
+    "license": "MIT-0",
+    "homepage": "https://fauna.com/blog/building-a-serverless-api-with-aws-sam-and-fauna",
+    "author": "Rob Sutter",
+    "keywords": [
+        "fauna",
+        "serverless",
+        "api",
+        "http",
+        "rest",
+        "aws"
+    ],
+    "bugs": "https://github.com/fauna-labs/aws-http-api/issues"
+}

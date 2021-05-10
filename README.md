@@ -1,4 +1,4 @@
-# Fauna Labs
+# AWS HTTP API
 
 This repository contains unofficial patterns, sample code, or tools to help developers build more effectively with [Fauna][fauna]. All [Fauna Labs][fauna-labs] repositories are provided “as-is” and without support. By using this repository or its contents, you agree that this repository may never be officially supported and moved to the [Fauna organization][fauna-organization].
 
@@ -6,3 +6,5 @@ This repository contains unofficial patterns, sample code, or tools to help deve
 [fauna-labs]: https://github.com/fauna-labs
 [fauna-organization]: https://github.com/fauna
 
+---
+Copyright Fauna, Inc. or its affiliates. All rights reserved. SPDX-License-Identifier: MIT-0

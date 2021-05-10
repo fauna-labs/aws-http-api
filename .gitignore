@@ -1,0 +1,6 @@
+# Ignore all the Node.js things
+node_modules/
+
+# Ignore all the AWS SAM things
+.aws-sam/
+samconfig.toml
