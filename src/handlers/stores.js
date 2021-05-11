@@ -1,3 +1,6 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
 'use strict';
 
 const { SSM } = require('aws-sdk')
