@@ -8,7 +8,6 @@ const f = require('faunadb'),
 let client;
 
 const init = async () => {
-	// TODO: update to use aws-parameter-cache
     // Get the Fauna Server Key from AWS Systems Manager Parameter Store at runtime.
     const { Parameter: { Value } } = await ssm.getParameter({ Name:  process.env.FAUNA_SECRET_PARAMETER, WithDecryption: true }).promise();
 
