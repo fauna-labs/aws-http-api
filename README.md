@@ -31,6 +31,8 @@ Use AWS SAM CLI's [guided interactive deployment mode][aws-sam-cli-guided-deploy
 sam deploy --guided
 ```
 
+**Note**: You can accept most of the defaults, but you must explicitly choose "y" to each question _{FunctionName} may not have authorization defined, Is this okay?_
+
 After the deployment completes, copy the value of the _ListStoresURL_ output and open the URL in a new browser tab. You should receive a JSON object containing a list of stores from the sample data in your Fauna database!
 
 ## Cleaning up resources
