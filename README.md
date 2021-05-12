@@ -28,7 +28,7 @@ cd aws-http-api
 Use AWS SAM CLI's [guided interactive deployment mode][aws-sam-cli-guided-deploy] to deploy the application to your AWS account.
 
 ```bash
-sam deploy --guided
+sam build && sam deploy --guided
 ```
 
 **Note**: You can accept most of the defaults, but you must explicitly choose "y" to each question _{FunctionName} may not have authorization defined, Is this okay?_
