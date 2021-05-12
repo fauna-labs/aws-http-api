@@ -21,7 +21,7 @@ First, complete the steps [Configuring a database in Fauna][blog-configuring-a-d
 Next, clone this repository to your local machine:
 
 ```bash
-git clone github.com/fauna-labs/aws-http-api.git
+git clone https://github.com/fauna-labs/aws-http-api.git
 cd aws-http-api
 ```
 
